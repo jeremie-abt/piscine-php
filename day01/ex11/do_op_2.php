@@ -7,16 +7,24 @@
 
         if (($second_nb = strstr($str, "+")))
         {
-            if (($first_nb = intval($str)) && ($second_nb = intval($second_nb)))
+        	
+		$second_nb = substr($second_nb, 1);
+		$second_nb = intval($second_nb);
+		$first_nb = intval($str);
+            if (($second_nb || ($second_nb[0] == '0' && !$second_nb[1])) && ($first_nb || ($first_nb[0] == '0' && !$first_nb[1])))
             {
                 $ret = $first_nb + $second_nb;
                 echo "$ret\n";
             }
             else
                 echo "Syntax Error\n";
+
         }
-        else if (($second_nb = strstr($str, "*"))) {
-            if (($first_nb = intval($str)) && ($second_nb = intval($second_nb)))
+	else if (($second_nb = strstr($str, "*"))) {
+		$second_nb = substr($second_nb, 1);
+		$second_nb = intval($second_nb);
+		$first_nb = intval($str);
+            if (($second_nb || ($second_nb[0] == '0' && !$second_nb[1])) && ($first_nb || ($first_nb[0] == '0' && !$first_nb[1])))
             {
                 $ret = $first_nb * $second_nb;
                 echo "$ret\n";
@@ -24,21 +32,48 @@
             else
                 echo "Syntax Error\n";
         }
-        else if (($second_nb = strrchr($str, "-"))) {
-            if (($first_nb = intval($str)) && ($second_nb = intval($second_nb)))
+        else if (($second_nb = strstr($str, "-"))) {
+	
+		$second_nb = substr($second_nb, 1);
+		$second_nb = intval($second_nb);
+		$first_nb = intval($str);
+            if (($second_nb || ($second_nb[0] == '0' && !$second_nb[1])) && ($first_nb || ($first_nb[0] == '0' && !$first_nb[1])))
             {
-                echo "le - est casse";
-        //        $ret = $first_nb - $second_nb;
-          //      echo "first : $first_nb sec : $second_nb\n";
-            //    echo "$ret\n";
+                $ret = $first_nb - $second_nb;
+                echo "$ret\n";
             }
             else
-                echo "Syntax Error\n"; 
-        }
-        else {
-            echo "Syntax Error\n";
-        }
+                echo "Syntax Error\n";	
+	} 
+	else if (($second_nb = strstr($str, "/"))) {
+		$second_nb = substr($second_nb, 1);
+		$second_nb = intval($second_nb);
+		$first_nb = intval($str);
+            if (($second_nb || ($second_nb[0] == '0' && !$second_nb[1])) && ($first_nb || ($first_nb[0] == '0' && !$first_nb[1])))
+            {
+                $ret = $first_nb / $second_nb;
+                echo "$ret\n";
+            }
+            else
+                echo "Syntax Error\n";
+	}
+	else if(($second_nb = strstr($str, "%"))) {
 
+		$second_nb = substr($second_nb, 1);
+		$second_nb = intval($second_nb);
+		$first_nb = intval($str);
+            if (($second_nb || ($second_nb[0] == '0' && !$second_nb[1])) && ($first_nb || ($first_nb[0] == '0' && !$first_nb[1])))
+            {
+                $ret = $first_nb % $second_nb;
+                echo "$ret\n";
+            }
+            else
+                echo "Syntax Error\n";
+
+	}
+	else {
+        	echo "Incorrect Parameters\n";
+	}
     }
     else {
         echo "Incorrect Parameters\n";
