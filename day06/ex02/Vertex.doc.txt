@@ -1,0 +1,10 @@
+<- Vertex ----------------------------------------------------------------------
+Vertex allow to create a vertex
+
+$instance = new Vertex( assoc_array ('x' => float, 'y' => float, 'z' => float, ['w' => 1, ['color' => class Color]]));
+
+it can take the five following argument :
+    - x / y / z, which are it's coordinante in 3D space;
+    - w wich is its homogeneous coordinate (optionnal), default value : 1;
+    - color which is a class color containing an RGB color, see Color.doc.txt, default value 0xFFFFFF (white)
+---------------------------------------------------------------------- Vertex ->
